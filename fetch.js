@@ -1,10 +1,6 @@
 fetch("https://reqres.in/api/users")
   .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw Error;
-    }
+    return response.json();
   })
   .then((data) => {
     const users = data.data;
@@ -29,17 +25,10 @@ fetch("https://reqres.in/api/users")
         return `${user.first_name} ${user.last_name}`;
       }
       return `${acc}, ${user.first_name} ${user.last_name}`;
-    }, "");
-    console.log(
-      "Наша база содержит данные следующих пользователей: " + userNames
-    );
-  });
+    }, "Наша база содержит данные следующих пользователей: ");
 
-/*
-response.json() - метод, который преобразует ответ в формате JSON в JavaScript-объект.
-метод возвращает промис, который разрешается с данными в формате JSON.
-*/
-/*.then(data => { ... }) — это метод, который вызывается после того,
- как данные были преобразованы в формат JSON.
-data — это объект, содержащий данные, возвращенные API.
-*/
+    console.log(userNames);
+  })
+  .catch((error) => {
+    console.log("сообщение об ошибке", error);
+  });
