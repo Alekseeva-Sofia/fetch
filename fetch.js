@@ -28,6 +28,20 @@ fetch("https://reqres.in/api/users")
     }, "Наша база содержит данные следующих пользователей: ");
 
     console.log(userNames);
+
+    console.log("Пункт №4:");
+
+    function printUserKeys(users) {
+      if (users.length > 0) {
+        const userKeys = Object.keys(users[0]);
+        console.log(
+          "Вывести названия всех ключей в объекте пользователя",
+          userKeys
+        );
+      }
+    }
+
+    printUserKeys(users);
   })
   .catch((error) => {
     console.log("сообщение об ошибке", error);
